@@ -30,6 +30,9 @@ module.exports = {
             gridTemplateColumns: {
                 main: "15% 63% 22%",
             },
+            gridTemplateRows: {
+                "preloader-rows": "60% 40%",
+            },
         },
         fontFamily: {
             sans: ["Nunito", "ui-sans-serif", "system-ui"],

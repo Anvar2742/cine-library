@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_KEY = "29f3aaf4f5e98c4d1he3ece2812871bt";
+const API_KEY = "09wefdsfsdf3aaf4f234c4sdfe3ece2842sd3f";
 
 export const themoviedbApi = createApi({
     reducerPath: "themoviedbApi",
@@ -15,4 +15,3 @@ export const themoviedbApi = createApi({
 });
 
 export const { useGetPopularQuery, useGetSingleMovieQuery, useGetMovieGenresQuery } = themoviedbApi;
-

@@ -12,6 +12,8 @@ function App() {
     const [searchValue, setSearchValue] = useState("");
     const [tabs, setTabs] = useState(navLinks);
     const [mainTab, setMainTab] = useState("movie");
+    const [mainComponentCount, setMainComponentCount] = useState(3);
+    const [isMainLoading, setIsMainLoading] = useState([]);
 
     function handleSearchChange(e) {
         setSearchValue(e.target.value);
@@ -27,11 +29,25 @@ function App() {
                           isActive: true,
                       }
                     : {
-                        ...prevTab,
-                        isActive: false,
-                    };
+                          ...prevTab,
+                          isActive: false,
+                      };
             });
         });
+        updateMainLoading([]);
+    }
+
+    function updateMainLoading(isLoading) {
+        if (!isLoading) {
+            setIsMainLoading(prevLoading => {
+                return [
+                    ...prevLoading,
+                    isLoading
+                ]
+            });
+        } else {
+            setIsMainLoading(isLoading);
+        }
     }
 
     return (
@@ -44,7 +60,12 @@ function App() {
                     changeTabs={changeTabs}
                     tabs={tabs}
                 />
-                <Main mainTab={mainTab} />
+                <Main
+                    mainTab={mainTab}
+                    isMainLoading={isMainLoading}
+                    updateMainLoading={updateMainLoading}
+                    mainComponentCount={mainComponentCount}
+                />
             </div>
             <SidebarRight />
         </div>

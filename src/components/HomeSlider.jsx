@@ -1,26 +1,33 @@
-import topMovies from "./../assets/topMovies.json";
 import { Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { getTitles } from "../assets";
 import * as Icon from "react-bootstrap-icons";
 import Error from "./Error";
 import { useEffect, useRef, useState } from "react";
 
-const HomeSlider = ({ data }) => {
-    // ************************ TO DO
-    // The code bellow is an attempt to fix the issue with sliders. 
-    // const homeSliderRef = useRef(null);
+const HomeSlider = (props) => {
+    const trendingMovies = getTitles(props.data, 1280).slice(0, 5);
 
-    // const slideTo = (index) => homeSliderRef.current.swiper.slideTo(index);
-    // slideTo(0);
+    /* Image load await */
+    const [imageCount, setImageCount] = useState([]);
 
-    // The issue: on tab change in <Main /> the sliders dont update themselves. If the slider is on 2'nd slide, then on tab change it will be on 2'nd tab also.
+    function handleImageLoad() {
+        setImageCount((prev) => [...prev, true]);
+    }
 
-    // What doesn't work in the code: we cannot render the SwiperSlide component and update HomeSlider component at the same time.
+    // Set mainLoading to true when all images are loaded.
+    useEffect(() => {
+        if (trendingMovies.length === imageCount.length) {
+            props.updateMainLoading(false);
+        }
+    }, [imageCount]);
 
-    // Probable fix: destroy and build again Swiper.
+    // On tab change empty the imageCount if the mainLoading is true
+    useEffect(() => {
+        if (props.isMainLoading.length === 0) setImageCount([]);
+    }, [props.isMainLoading]);
 
-    const trendingMovies = getTitles(data, 1280).slice(0, 5);
+    /* Image load await */
 
     if (trendingMovies.length === 0) return <Error />;
     return (
@@ -30,7 +37,6 @@ const HomeSlider = ({ data }) => {
             pagination={{ clickable: true }}
             slidesPerView={1}
             className="w-full"
-            // ref={homeSliderRef}
         >
             {trendingMovies.map((item) => (
                 <SwiperSlide
@@ -42,11 +48,16 @@ const HomeSlider = ({ data }) => {
                 >
                     <img
                         src={item.backdrop_path}
-                        alt={item.original_title}
+                        alt={
+                            item.original_title
+                                ? item.original_title
+                                : item.name
+                        }
                         className="h-full w-full object-cover"
+                        onLoad={handleImageLoad}
                     />
                     <h2 className="text-6xl top-[10%] left-[8%] absolute z-10">
-                        {item.original_title}
+                        {item.original_title ? item.original_title : item.name}
                     </h2>
                     <div className="z-10 absolute bottom-[30px] px-[20px] w-full flex justify-between">
                         <button className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-2 px-6 transition-colors hover:bg-gray-249-5">
