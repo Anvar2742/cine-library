@@ -13,8 +13,8 @@ const Header = ({ searchValue, handleSearchChange, changeTabs, tabs }) => {
                     <button
                         key={item.name}
                         className={`
-                            link text-white-gray text-2xl font-semibold relative cursor-pointer [&:not(:last-child)]:mr-10
-                            after:block after:absolute after:-bottom-2 after:w-full after:h-[4px] after:transition-colors after:rounded-[92px] hover:after:bg-secondary
+                            link text-white-gray text-2xl font-semibold relative cursor-pointer pb-2 [&:not(:last-child)]:mr-10
+                            after:block after:absolute after:-bottom-0 after:w-full after:h-[4px] after:transition-colors after:rounded-[92px] hover:after:bg-secondary
                             ${item.isActive && 'after:bg-secondary'}
                         `}
                         onClick={() => changeTabs(item.to)}

@@ -47,35 +47,12 @@ const PopularSlide = ({ items, handleImageLoad }) => {
 };
 
 const Popular = (props) => {
-    /* Image load await */
-    const [imageCount, setImageCount] = useState([]);
-
-    function handleImageLoad() {
-        setImageCount((prev) => [...prev, true]);
-    }
-
-    // Set mainLoading to true when all images are loaded.
-    useEffect(() => {
-        if (trendingMovies.length === imageCount.length) {
-            props.updateMainLoading(false);
-        }
-    }, [imageCount]);
-
-    // On tab change empty the imageCount if the mainLoading is true
-    useEffect(() => {
-        if (props.isMainLoading.length === 0) setImageCount([]);
-    }, [props.isMainLoading]);
-
-    /* Image load await */
-    
-    const trendingMovies = getTitles(props.data, 1280).slice(0, 5);
-
     return (
         <div className="w-full pl-16">
             <h2 className="text-3xl mb-8">Popular</h2>
             <PopularSlide
-                items={trendingMovies}
-                handleImageLoad={handleImageLoad}
+                items={props.trendingMovies}
+                handleImageLoad={props.handleImageLoad}
             />
         </div>
     );

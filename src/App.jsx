@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Loader from "./components/Loader";
 import Main from "./components/Main";
@@ -13,7 +13,8 @@ function App() {
     const [tabs, setTabs] = useState(navLinks);
     const [mainTab, setMainTab] = useState("movie");
     const [mainComponentCount, setMainComponentCount] = useState(3);
-    const [isMainLoading, setIsMainLoading] = useState([]);
+    const [imagesCount, setImagesCount] = useState(0);
+    const [isMainLoading, setIsMainLoading] = useState(true);
 
     function handleSearchChange(e) {
         setSearchValue(e.target.value);
@@ -34,20 +35,19 @@ function App() {
                       };
             });
         });
-        updateMainLoading([]);
+        updateMainLoading(true);
     }
 
     function updateMainLoading(isLoading) {
-        if (!isLoading) {
-            setIsMainLoading(prevLoading => {
-                return [
-                    ...prevLoading,
-                    isLoading
-                ]
-            });
-        } else {
-            setIsMainLoading(isLoading);
+        setIsMainLoading(isLoading);
+    }
+
+    function updateImagesCount(count) {
+        if (count === -1) {
+            setImagesCount(0);
+            return;
         }
+        setImagesCount((prev) => prev + 1);
     }
 
     return (
@@ -65,6 +65,8 @@ function App() {
                     isMainLoading={isMainLoading}
                     updateMainLoading={updateMainLoading}
                     mainComponentCount={mainComponentCount}
+                    updateImagesCount={updateImagesCount}
+                    imagesCount={imagesCount}
                 />
             </div>
             <SidebarRight />

@@ -6,30 +6,7 @@ import Error from "./Error";
 import { useEffect, useRef, useState } from "react";
 
 const HomeSlider = (props) => {
-    const trendingMovies = getTitles(props.data, 1280).slice(0, 5);
-
-    /* Image load await */
-    const [imageCount, setImageCount] = useState([]);
-
-    function handleImageLoad() {
-        setImageCount((prev) => [...prev, true]);
-    }
-
-    // Set mainLoading to true when all images are loaded.
-    useEffect(() => {
-        if (trendingMovies.length === imageCount.length) {
-            props.updateMainLoading(false);
-        }
-    }, [imageCount]);
-
-    // On tab change empty the imageCount if the mainLoading is true
-    useEffect(() => {
-        if (props.isMainLoading.length === 0) setImageCount([]);
-    }, [props.isMainLoading]);
-
-    /* Image load await */
-
-    if (trendingMovies.length === 0) return <Error />;
+    if (props.trendingMovies.length === 0) return <Error />;
     return (
         <Swiper
             modules={[Navigation, Pagination]}
@@ -38,7 +15,7 @@ const HomeSlider = (props) => {
             slidesPerView={1}
             className="w-full"
         >
-            {trendingMovies.map((item) => (
+            {props.trendingMovies.map((item) => (
                 <SwiperSlide
                     key={item.id}
                     className={`
@@ -54,7 +31,7 @@ const HomeSlider = (props) => {
                                 : item.name
                         }
                         className="h-full w-full object-cover"
-                        onLoad={handleImageLoad}
+                        onLoad={props.handleImageLoad}
                     />
                     <h2 className="text-6xl top-[10%] left-[8%] absolute z-10">
                         {item.original_title ? item.original_title : item.name}
