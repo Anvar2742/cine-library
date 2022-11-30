@@ -1,6 +1,4 @@
-import { navLinks } from "../assets/constants";
 import * as Icon from "react-bootstrap-icons";
-import { NavLink } from "react-router-dom";
 
 const Header = ({ searchValue, handleSearchChange, changeTabs, tabs }) => {
     return (

@@ -69,7 +69,7 @@ function App() {
                     imagesCount={imagesCount}
                 />
             </div>
-            <SidebarRight />
+            <SidebarRight mainTab={mainTab} isMainLoading={isMainLoading} />
         </div>
     );
 }

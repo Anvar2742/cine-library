@@ -1,9 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { getTitles } from "../assets";
 import * as Icon from "react-bootstrap-icons";
-import { useEffect, useState } from "react";
 
-const PopularSlide = ({ items, handleImageLoad }) => {
+const PopularSlide = ({ items, onLoad }) => {
     return (
         <Swiper
             slidesPerView={3}
@@ -27,7 +25,7 @@ const PopularSlide = ({ items, handleImageLoad }) => {
                                 : item.name
                         }
                         className="h-full w-full object-cover"
-                        onLoad={handleImageLoad}
+                        onLoad={onLoad}
                     />
                     <h2 className="text-2xl top-[10%] left-[8%] absolute z-10 pr-3">
                         {item.original_title ? item.original_title : item.name}
@@ -49,11 +47,13 @@ const PopularSlide = ({ items, handleImageLoad }) => {
 const Popular = (props) => {
     return (
         <div className="w-full pl-16">
-            <h2 className="text-3xl mb-8">Popular</h2>
-            <PopularSlide
-                items={props.trendingMovies}
-                handleImageLoad={props.handleImageLoad}
-            />
+            <h2 className="text-3xl mb-8">
+                Popular{" "}
+                {props.mainTab && props.mainTab === "tv"
+                    ? "TV shows"
+                    : "movies"}
+            </h2>
+            <PopularSlide items={props.data} onLoad={props.onLoad} />
         </div>
     );
 };
