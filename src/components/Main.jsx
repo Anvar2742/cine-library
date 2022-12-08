@@ -9,14 +9,14 @@ import Popular from "./Popular";
 
 const Main = (props) => {
     const trendingTitles = themoviedbApi.useGetTrendingWeekQuery(props.mainTab);
-    const trendingTitlesData = getTitles(trendingTitles.data, 1280).slice(0, 6);
+    const trendingTitlesData = getTitles(trendingTitles.data, 500).slice(0, 5);
 
     const filterPopular = {
-        kind: props.mainTab,
+        type: props.mainTab,
         language: "en-US",
     };
     const popularTitles = themoviedbApi.useGetPopularQuery(filterPopular);
-    const popularTitlesData = getTitles(popularTitles.data, 1280).slice(0, 10);
+    const popularTitlesData = getTitles(popularTitles.data, 500).slice(0, 5);
 
     const onLoad = after(
         trendingTitlesData.concat(popularTitlesData).length,
@@ -29,10 +29,10 @@ const Main = (props) => {
     if (trendingTitles.error && popularTitles.error) return <Error />;
     return (
         <main className="relative">
-            {props.isMainLoading ? <ImageLoader /> : ""}
+            {/* {props.isMainLoading ? <ImageLoader /> : ""} */}
             <div
                 className={`text-white pt-20 pb-12 grid auto-rows-auto grid-cols-1 gap-10 ${
-                    props.isMainLoading ? "opacity-0" : ""
+                    props.isMainLoading ? "opacity-100" : ""
                 }`}
             >
                 <div className="px-16">

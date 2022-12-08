@@ -7,6 +7,8 @@ import "swiper/css";
 import Header from "./components/Header";
 import SidebarRight from "./components/SidebarRight";
 import { navLinks } from "./assets/constants";
+import SingleTitle from "./pages/SingleTitle";
+import SingleSidebarRight from "./components/SingleSidebarRight";
 
 function App() {
     const [searchValue, setSearchValue] = useState("");
@@ -51,7 +53,7 @@ function App() {
     }
 
     return (
-        <div className="grid grid-cols-main h-full font-sans font-extrabold bg-black-darkest">
+        <div className="grid grid-cols-main h-full font-sans bg-black-darkest">
             <SidebarLeft />
             <div className="overflow-auto overflow-x-hidden">
                 <Header
@@ -60,16 +62,49 @@ function App() {
                     changeTabs={changeTabs}
                     tabs={tabs}
                 />
-                <Main
-                    mainTab={mainTab}
-                    isMainLoading={isMainLoading}
-                    updateMainLoading={updateMainLoading}
-                    mainComponentCount={mainComponentCount}
-                    updateImagesCount={updateImagesCount}
-                    imagesCount={imagesCount}
-                />
+                <Routes>
+                    <Route
+                        exact
+                        path="/"
+                        element={
+                            <Main
+                                mainTab={mainTab}
+                                isMainLoading={isMainLoading}
+                                updateMainLoading={updateMainLoading}
+                                mainComponentCount={mainComponentCount}
+                                updateImagesCount={updateImagesCount}
+                                imagesCount={imagesCount}
+                            />
+                        }
+                    ></Route>
+                    <Route path="title">
+                        <Route
+                            path="/title/:type/:titleId"
+                            element={<SingleTitle />}
+                        />
+                    </Route>
+                </Routes>
             </div>
-            <SidebarRight mainTab={mainTab} isMainLoading={isMainLoading} />
+            <Routes>
+                <Route
+                    exact
+                    path="*"
+                    element={
+                        <SidebarRight
+                            mainTab={mainTab}
+                            isMainLoading={isMainLoading}
+                        />
+                    }
+                ></Route>
+                <Route path="title">
+                    <Route
+                        path="/title/:type/:titleId"
+                        element={
+                            <SingleSidebarRight />
+                        }
+                    />
+                </Route>
+            </Routes>
         </div>
     );
 }

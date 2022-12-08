@@ -15,7 +15,7 @@ const MiniSlider = (props) => {
     return (
         <div className={`${props.isSidebarLoading ? "opacity-0" : ""}`}>
             <div className="flex justify-between pr-9 mb-6">
-                <h2 className="text-3xl">Top Rated</h2>
+                <h2 className="text-3xl font-extrabold">Top Rated</h2>
                 <div className="flex">
                     <button ref={prevRef} className="-rotate-180 mr-5">
                         <ArrowPoint />
@@ -40,7 +40,7 @@ const MiniSlider = (props) => {
                     swiper.navigation.update();
                 }}
                 className="w-full overflow-visible pr-[25%] relative h-[20vh]
-                                        after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
+                                        after:block after:absolute after:h-full after:w-[20%] after:pointer-events-none after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
                                     "
             >
                 {props.items.map((item) => (
@@ -53,26 +53,28 @@ const MiniSlider = (props) => {
                     >
                         <img
                             src={item.backdrop_path}
-                            alt={
-                                item.original_title
-                                    ? item.original_title
-                                    : item.name
-                            }
+                            alt={item.title ? item.title : item.name}
                             className="h-full w-full object-cover"
                             onLoad={props.onLoad}
                         />
-                        <h3 className="text-base top-[10%] left-[8%] absolute z-10">
-                            {item.original_title
-                                ? item.original_title
-                                : item.name}
+                        <h3 className="text-lg top-[10%] left-[8%] absolute z-10 font-extrabold">
+                            {item.title ? item.title : item.name}
                         </h3>
                         <div className="z-10 absolute bottom-[5%] px-2 w-full flex justify-between">
-                            <button className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-1 px-4 transition-colors hover:bg-gray-249-5">
-                                <Icon.Plus size={38} />
-                            </button>
-                            <button className="backdrop-blur-sm rounded-2xl font-extrabold text-lg flex justify-center items-center transition-colors py-1 px-8 text-black-darkest bg-secondary hover:bg-secondary-hover">
-                                Watch
-                            </button>
+                            <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-1 px-4 transition-colors hover:bg-gray-249-5">
+                                <span className="pt-1">
+                                    {item.vote_average
+                                        ? item.vote_average.toFixed(2)
+                                        : "No votes"}
+                                </span>
+                            </div>
+                            <div className="backdrop-blur-sm rounded-2xl font-extrabold text-lg flex justify-center items-center transition-colors py-1 px-8 text-black-darkest bg-secondary hover:bg-secondary-hover">
+                                <span className="pt-1">
+                                    {item.release_date
+                                        ? item.release_date
+                                        : "Date misses."}
+                                </span>
+                            </div>
                         </div>
                     </SwiperSlide>
                 ))}
@@ -88,7 +90,7 @@ const MiniSliderGenres = (props) => {
     return (
         <div className={`${props.isSidebarLoading ? "opacity-0" : ""}`}>
             <div className="flex justify-between pr-9 mb-6">
-                <h2 className="text-3xl">Genres</h2>
+                <h2 className="text-3xl font-extrabold">Genres</h2>
                 <div className="flex">
                     <button ref={prevRef} className="-rotate-180 mr-5">
                         <ArrowPoint />
@@ -113,7 +115,7 @@ const MiniSliderGenres = (props) => {
                     swiper.navigation.update();
                 }}
                 className="w-full overflow-visible pr-[25%] relative
-                                        after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
+                                        after:block after:absolute after:h-full after:w-[20%] after:pointer-events-none after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
                                     "
             >
                 {props.items.map((item, i) => {
@@ -127,7 +129,7 @@ const MiniSliderGenres = (props) => {
                                     after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden
                                     "
                                 >
-                                    <h3 className="relative z-10 text-lg">
+                                    <h3 className="relative z-10 text-lg font-extrabold">
                                         {item.name}
                                     </h3>
                                 </div>
@@ -140,7 +142,7 @@ const MiniSliderGenres = (props) => {
                                     mt-7
                                     "
                                 >
-                                    <h3 className="relative z-10 text-lg">
+                                    <h3 className="relative z-10 text-lg font-extrabold">
                                         {props.items[i - 1].name}
                                     </h3>
                                 </div>
@@ -167,14 +169,14 @@ const SidebarLoader = () => {
 const SidebarRight = (props) => {
     const [isSidebarLoading, setIsSidebarLoading] = useState(true);
     const filterTopRated = {
-        kind: props.mainTab,
+        type: props.mainTab,
         language: "en-US",
         page: 1,
     };
     const topRatedTitles = themoviedbApi.useGetTopRatedQuery(filterTopRated);
-    const topRatedTitlesData = getTitles(topRatedTitles.data, 1280).slice(
+    const topRatedTitlesData = getTitles(topRatedTitles.data, 500).slice(
         0,
-        10
+        5
     );
 
     const genres = getGenres(genresData);

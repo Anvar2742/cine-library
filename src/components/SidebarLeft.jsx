@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { generalLinks, libLinks, menuLinks } from "../assets/constants";
 
 const NavLinks = ({ menu, menuTitle }) => {
     return (
         <div className="w-full first:mb-10">
-            <h3 className="font-bold text-title-gray text-lg mb-6">
+            <h3 className="font-extrabold text-title-gray text-lg mb-6">
                 {menuTitle}
             </h3>
             <nav>
@@ -28,10 +28,10 @@ const NavLinks = ({ menu, menuTitle }) => {
 const SidebarLeft = () => {
     return (
         <aside className="bg-black-dark text-white-gray flex flex-col justify-around items-start pl-[38px] h-full">
-            <a href="#" className="text-white-gray text-4xl">
+            <Link to="/" className="text-white-gray text-4xl font-extrabold leading-6">
                 CINE <br />
                 <span className="text-xl">LIBRARY</span>
-            </a>
+            </Link>
 
             <div className="w-full">
                 <NavLinks menu={menuLinks} menuTitle="Menu" />
