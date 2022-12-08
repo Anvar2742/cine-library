@@ -20,7 +20,7 @@ const HomeSlider = (props) => {
                 navigation
                 pagination={{ clickable: true }}
                 slidesPerView={1}
-                className="w-full"
+                className="w-full h-[30vw]"
             >
                 {props.data.map((item) => (
                     <SwiperSlide

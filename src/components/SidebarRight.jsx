@@ -39,8 +39,8 @@ const MiniSlider = (props) => {
                     swiper.navigation.init();
                     swiper.navigation.update();
                 }}
-                className="w-full overflow-visible pr-[25%] relative h-[20vh]
-                                        after:block after:absolute after:h-full after:w-[20%] after:pointer-events-none after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
+                className="w-full overflow-visible pr-[25%] relative h-[10vw]
+                                        after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
                                     "
             >
                 {props.items.map((item) => (
@@ -57,7 +57,7 @@ const MiniSlider = (props) => {
                             className="h-full w-full object-cover"
                             onLoad={props.onLoad}
                         />
-                        <h3 className="text-lg top-[10%] left-[8%] absolute z-10 font-extrabold">
+                        <h3 className="text-base top-[10%] left-[8%] absolute z-10">
                             {item.title ? item.title : item.name}
                         </h3>
                         <div className="z-10 absolute bottom-[5%] px-2 w-full flex justify-between">
@@ -114,8 +114,8 @@ const MiniSliderGenres = (props) => {
                     swiper.navigation.init();
                     swiper.navigation.update();
                 }}
-                className="w-full overflow-visible pr-[25%] relative
-                                        after:block after:absolute after:h-full after:w-[20%] after:pointer-events-none after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
+                className="w-full overflow-visible pr-[25%] relative h-[20vw]
+                                        after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
                                     "
             >
                 {props.items.map((item, i) => {
