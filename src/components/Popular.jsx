@@ -6,7 +6,7 @@ const PopularSlide = ({ items, onLoad }) => {
         <Swiper
             slidesPerView={3}
             spaceBetween={30}
-            className="w-full overflow-visible pr-[15%] relative
+            className="w-full h-[24vw] overflow-visible pr-[15%] relative
             after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal after:z-30
         "
         >
@@ -20,15 +20,15 @@ const PopularSlide = ({ items, onLoad }) => {
                     <img
                         src={item.poster_path}
                         alt={
-                            item.original_title
-                                ? item.original_title
+                            item.title
+                                ? item.title
                                 : item.name
                         }
                         className="h-full w-full object-cover"
                         onLoad={onLoad}
                     />
                     <h2 className="text-2xl top-[10%] left-[8%] absolute z-10 pr-3">
-                        {item.original_title ? item.original_title : item.name}
+                        {item.title ? item.title : item.name}
                     </h2>
                     <div className="z-10 absolute bottom-[30px] px-[20px] w-full flex justify-between">
                         <button className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-2 px-6 transition-colors hover:bg-gray-249-5">

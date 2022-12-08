@@ -39,7 +39,7 @@ const MiniSlider = (props) => {
                     swiper.navigation.init();
                     swiper.navigation.update();
                 }}
-                className="w-full overflow-visible pr-[25%] relative h-[20vh]
+                className="w-full overflow-visible pr-[25%] relative h-[10vw]
                                         after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
                                     "
             >
@@ -53,18 +53,12 @@ const MiniSlider = (props) => {
                     >
                         <img
                             src={item.backdrop_path}
-                            alt={
-                                item.original_title
-                                    ? item.original_title
-                                    : item.name
-                            }
+                            alt={item.title ? item.title : item.name}
                             className="h-full w-full object-cover"
                             onLoad={props.onLoad}
                         />
                         <h3 className="text-base top-[10%] left-[8%] absolute z-10">
-                            {item.original_title
-                                ? item.original_title
-                                : item.name}
+                            {item.title ? item.title : item.name}
                         </h3>
                         <div className="z-10 absolute bottom-[5%] px-2 w-full flex justify-between">
                             <button className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-1 px-4 transition-colors hover:bg-gray-249-5">
@@ -112,7 +106,7 @@ const MiniSliderGenres = (props) => {
                     swiper.navigation.init();
                     swiper.navigation.update();
                 }}
-                className="w-full overflow-visible pr-[25%] relative
+                className="w-full overflow-visible pr-[25%] relative h-[20vw]
                                         after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
                                     "
             >

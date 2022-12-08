@@ -18,7 +18,7 @@ const HomeSlider = (props) => {
                 navigation
                 pagination={{ clickable: true }}
                 slidesPerView={1}
-                className="w-full"
+                className="w-full h-[30vw]"
             >
                 {props.data.map((item) => (
                     <SwiperSlide
@@ -31,16 +31,16 @@ const HomeSlider = (props) => {
                         <img
                             src={item.backdrop_path}
                             alt={
-                                item.original_title
-                                    ? item.original_title
+                                item.title
+                                    ? item.title
                                     : item.name
                             }
                             className="h-full w-full object-cover"
                             onLoad={props.onLoad}
                         />
                         <h2 className="text-6xl top-[10%] left-[8%] absolute z-10">
-                            {item.original_title
-                                ? item.original_title
+                            {item.title
+                                ? item.title
                                 : item.name}
                         </h2>
                         <div className="z-10 absolute bottom-[30px] px-[20px] w-full flex justify-between">
