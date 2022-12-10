@@ -1,51 +1,55 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import * as Icon from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
-const PopularSlide = ({ items, onLoad }) => {
+const PopularSlider = (props) => {
     return (
         <Swiper
             slidesPerView={3}
             spaceBetween={30}
             className="w-full h-[24vw] overflow-visible pr-[15%] relative
-            after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal after:z-30
+            after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal after:z-30 after:pointer-events-none
         "
         >
-            {items.map((item) => (
-                <SwiperSlide
-                    key={item.id}
-                    className="
-                relative
-                after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden"
-                >
-                    <img
-                        src={item.poster_path}
-                        alt={
-                            item.original_title
+            {props.items.map((item) => (
+                <SwiperSlide key={item.id} className="">
+                    <Link
+                        to={`/title/${props.mainTab}/${item.id}`}
+                        className="block relative
+                                    after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden"
+                    >
+                        <img
+                            src={item.poster_path}
+                            alt={
+                                item.original_title
+                                    ? item.original_title
+                                    : item.name
+                            }
+                            className="h-full w-full object-cover"
+                            onLoad={props.onLoad}
+                        />
+                        <h2 className="text-2xl top-[10%] left-[8%] absolute z-10 pr-3">
+                            {item.original_title
                                 ? item.original_title
-                                : item.name
-                        }
-                        className="h-full w-full object-cover"
-                        onLoad={onLoad}
-                    />
-                    <h2 className="text-2xl top-[10%] left-[8%] absolute z-10 pr-3">
-                        {item.original_title ? item.original_title : item.name}
-                    </h2>
-                    <div className="z-10 absolute bottom-[30px] px-[20px] w-full flex justify-between">
-                        <button className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-2 px-6 transition-colors hover:bg-gray-249-5">
-                            <span className="pt-1">
-                                {item.vote_average
-                                    ? item.vote_average.toFixed(2)
-                                    : "No votes"}
-                            </span>
-                        </button>
-                        <button className="backdrop-blur-sm rounded-2xl font-extrabold text-lg flex justify-center items-center transition-colors py-2 px-6 text-black-darkest bg-secondary hover:bg-secondary-hover">
-                            <span className="pt-1">
-                                {item.release_date
-                                    ? item.release_date
-                                    : "Date misses."}
-                            </span>
-                        </button>
-                    </div>
+                                : item.name}
+                        </h2>
+                        <div className="z-10 absolute bottom-[30px] px-[20px] w-full flex justify-between">
+                            <button className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-2 px-6 transition-colors hover:bg-gray-249-5">
+                                <span className="pt-1">
+                                    {item.vote_average
+                                        ? item.vote_average.toFixed(2)
+                                        : "No votes"}
+                                </span>
+                            </button>
+                            <button className="backdrop-blur-sm rounded-2xl font-extrabold text-lg flex justify-center items-center transition-colors py-2 px-6 text-black-darkest bg-secondary hover:bg-secondary-hover">
+                                <span className="pt-1">
+                                    {item.release_date
+                                        ? item.release_date
+                                        : "Date misses."}
+                                </span>
+                            </button>
+                        </div>
+                    </Link>
                 </SwiperSlide>
             ))}
         </Swiper>
@@ -61,7 +65,7 @@ const Popular = (props) => {
                     ? "TV shows"
                     : "movies"}
             </h2>
-            <PopularSlide items={props.data} onLoad={props.onLoad} />
+            <PopularSlider items={props.data} onLoad={props.onLoad} mainTab={props.mainTab} />
         </div>
     );
 };

@@ -8,12 +8,13 @@ import { getGenres, getTitles } from "../assets";
 import { useEffect, useRef, useState } from "react";
 import { themoviedbApi } from "../redux/services/api";
 import { after } from "underscore";
+import { Link } from "react-router-dom";
 
 const MiniSlider = (props) => {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     return (
-        <div className={`${props.isSidebarLoading ? "opacity-0" : ""}`}>
+        <div className={`${props.isSidebarLoading ? "opacity-100" : ""}`}>
             <div className="flex justify-between pr-9 mb-6">
                 <h2 className="text-3xl font-extrabold">Top Rated</h2>
                 <div className="flex">
@@ -40,42 +41,42 @@ const MiniSlider = (props) => {
                     swiper.navigation.update();
                 }}
                 className="w-full overflow-visible pr-[25%] relative h-[10vw]
-                                        after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
+                                        after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30 after:pointer-events-none
                                     "
             >
                 {props.items.map((item) => (
-                    <SwiperSlide
-                        key={item.id}
-                        className="
-                        relative h-full
-                        outline-1 outline-border-gray
-                        after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden"
-                    >
-                        <img
-                            src={item.backdrop_path}
-                            alt={item.title ? item.title : item.name}
-                            className="h-full w-full object-cover"
-                            onLoad={props.onLoad}
-                        />
-                        <h3 className="text-base top-[10%] left-[8%] absolute z-10">
-                            {item.title ? item.title : item.name}
-                        </h3>
-                        <div className="z-10 absolute bottom-[5%] px-2 w-full flex justify-between">
-                            <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-1 px-4 transition-colors hover:bg-gray-249-5">
-                                <span className="pt-1">
-                                    {item.vote_average
-                                        ? item.vote_average.toFixed(2)
-                                        : "No votes"}
-                                </span>
+                    <SwiperSlide key={item.id} className="">
+                        <Link
+                            to={`/title/${props.mainTab}/${item.id}`}
+                            className="block relative h-full outline-1 outline-border-gray
+                                        after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden"
+                        >
+                            <img
+                                src={item.backdrop_path}
+                                alt={item.title ? item.title : item.name}
+                                className="h-full w-full object-cover"
+                                onLoad={props.onLoad}
+                            />
+                            <h3 className="text-base top-[10%] left-[8%] absolute z-10">
+                                {item.title ? item.title : item.name}
+                            </h3>
+                            <div className="z-10 absolute bottom-[5%] px-2 w-full flex justify-between">
+                                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-1 px-4 transition-colors hover:bg-gray-249-5">
+                                    <span className="pt-1">
+                                        {item.vote_average
+                                            ? item.vote_average.toFixed(2)
+                                            : "No votes"}
+                                    </span>
+                                </div>
+                                <div className="backdrop-blur-sm rounded-2xl font-extrabold text-lg flex justify-center items-center transition-colors py-1 px-8 text-black-darkest bg-secondary hover:bg-secondary-hover">
+                                    <span className="pt-1">
+                                        {item.release_date
+                                            ? item.release_date
+                                            : "Date misses."}
+                                    </span>
+                                </div>
                             </div>
-                            <div className="backdrop-blur-sm rounded-2xl font-extrabold text-lg flex justify-center items-center transition-colors py-1 px-8 text-black-darkest bg-secondary hover:bg-secondary-hover">
-                                <span className="pt-1">
-                                    {item.release_date
-                                        ? item.release_date
-                                        : "Date misses."}
-                                </span>
-                            </div>
-                        </div>
+                        </Link>
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -88,7 +89,7 @@ const MiniSliderGenres = (props) => {
     const nextRef = useRef(null);
 
     return (
-        <div className={`${props.isSidebarLoading ? "opacity-0" : ""}`}>
+        <div className={`${props.isSidebarLoading ? "opacity-100" : ""}`}>
             <div className="flex justify-between pr-9 mb-6">
                 <h2 className="text-3xl font-extrabold">Genres</h2>
                 <div className="flex">
@@ -121,9 +122,12 @@ const MiniSliderGenres = (props) => {
                 {props.items.map((item, i) => {
                     if (i % 2) {
                         return (
-                            <SwiperSlide key={item.id} className="">
+                            <SwiperSlide
+                                key={item.id}
+                                className="grid grid-rows-2 grid-cols-1 gap-y-7"
+                            >
                                 <div
-                                    className="h-[12vh] bg-[url('https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')] bg-center bg-cover bg-no-repeat relative h-full 
+                                    className="bg-[url('https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')] bg-center bg-cover bg-no-repeat relative h-full 
                                     outline-1 outline-border-gray
                                     flex items-center justify-center
                                     after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden
@@ -135,11 +139,10 @@ const MiniSliderGenres = (props) => {
                                 </div>
 
                                 <div
-                                    className="h-[12vh] bg-[url('https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')] bg-center bg-cover bg-no-repeat relative h-full 
+                                    className="bg-[url('https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')] bg-center bg-cover bg-no-repeat relative h-full 
                                     outline-1 outline-border-gray
                                     flex items-center justify-center
                                     after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden
-                                    mt-7
                                     "
                                 >
                                     <h3 className="relative z-10 text-lg font-extrabold">
@@ -174,10 +177,7 @@ const SidebarRight = (props) => {
         page: 1,
     };
     const topRatedTitles = themoviedbApi.useGetTopRatedQuery(filterTopRated);
-    const topRatedTitlesData = getTitles(topRatedTitles.data, 500).slice(
-        0,
-        5
-    );
+    const topRatedTitlesData = getTitles(topRatedTitles.data, 500).slice(0, 5);
 
     const genres = getGenres(genresData);
 
@@ -204,9 +204,10 @@ const SidebarRight = (props) => {
             </div>
 
             <div className="w-full grid auto-rows-auto gap-16 grid-cols-1 relative">
-                {isSidebarLoading ? <SidebarLoader /> : ""}
+                {/* {isSidebarLoading ? <SidebarLoader /> : ""} */}
                 <MiniSlider
                     items={topRatedTitlesData}
+                    mainTab={props.mainTab}
                     isSidebarLoading={isSidebarLoading}
                     onLoad={onLoad}
                 />
