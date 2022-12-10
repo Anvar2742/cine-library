@@ -35,12 +35,16 @@ const SingleSidebarRight = (props) => {
 
     return (
         <aside className="bg-black-dark text-white-gray flex flex-col justify-around items-start pl-6 h-full overflow-x-hidden">
-            <h2 className="text-2xl mt-5 bg-secondary text-center p-2 font-extrabold rounded-l-2xl">
-                {singleItem.tagline ? singleItem.tagline : "no tagline"}
-            </h2>
+            {singleItem.tagline ? (
+                <h2 className="text-2xl mt-5 bg-secondary text-center p-2 font-extrabold rounded-l-2xl ml-auto">
+                    {singleItem.tagline}
+                </h2>
+            ) : (
+                ""
+            )}
             <div>
                 <h3 className="text-2xl mb-2 font-extrabold">Genres</h3>
-                <div>
+                <div className="flex gap-2 flex-wrap">
                     {singleItem.genres?.map((genre) => (
                         <Link
                             key={genre.id}
@@ -54,7 +58,7 @@ const SingleSidebarRight = (props) => {
             </div>
             <div>
                 <h3 className="text-2xl mb-2 font-extrabold">Rating</h3>
-                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-2xl flex justify-center items-center h-14 px-8 transition-colors hover:bg-gray-249-5">
+                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-2xl flex justify-center items-center h-14 px-8 transition-colors hover:bg-gray-249-5 pointer-events-none">
                     <Icon.StarHalf size={35} className="mr-2" />
                     <span className="pt-1">
                         {singleItem.vote_average

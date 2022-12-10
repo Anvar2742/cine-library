@@ -23,7 +23,7 @@ const SingleTitle = (props) => {
     if (isLoading) return <Loader />;
     if (error) return <Error />;
     return (
-        <div className="text-white relative px-16 mt-20">
+        <div className="text-white relative px-16 mt-20 pb-16">
             {isImageLoading ? <ImageLoader /> : ""}
             <div className={`${isImageLoading ? "opacity-0" : ""}`}>
                 <img
