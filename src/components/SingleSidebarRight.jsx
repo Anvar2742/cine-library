@@ -36,14 +36,14 @@ const SingleSidebarRight = (props) => {
     return (
         <aside className="bg-black-dark text-white-gray flex flex-col justify-around items-start pl-6 h-full overflow-x-hidden">
             {singleItem.tagline ? (
-                <h2 className="text-2xl mt-5 bg-secondary text-center p-2 font-extrabold rounded-l-2xl ml-auto">
+                <h2 className="text-2xl mt-5 bg-secondary text-center p-4 font-light rounded-l-md ml-auto">
                     {singleItem.tagline}
                 </h2>
             ) : (
                 ""
             )}
             <div>
-                <h3 className="text-2xl mb-2 font-extrabold">Genres</h3>
+                <h3 className="text-2xl mb-2 font-bold">Genres</h3>
                 <div className="flex gap-2 flex-wrap">
                     {singleItem.genres?.map((genre) => (
                         <Link
@@ -57,8 +57,8 @@ const SingleSidebarRight = (props) => {
                 </div>
             </div>
             <div>
-                <h3 className="text-2xl mb-2 font-extrabold">Rating</h3>
-                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-2xl flex justify-center items-center h-14 px-8 transition-colors hover:bg-gray-249-5 pointer-events-none">
+                <h3 className="text-2xl mb-2 font-bold">Rating</h3>
+                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-bold text-2xl flex justify-center items-center h-14 px-8 transition-colors hover:bg-gray-249-5 pointer-events-none">
                     <Icon.StarHalf size={35} className="mr-2" />
                     <span className="pt-1">
                         {singleItem.vote_average
@@ -68,7 +68,7 @@ const SingleSidebarRight = (props) => {
                 </div>
             </div>
             <div>
-                <h3 className="text-2xl mb-2 font-extrabold">Release date</h3>
+                <h3 className="text-2xl mb-2 font-bold">Release date</h3>
                 <div className="mb-2 text-lg">
                     {singleItem.release_date
                         ? singleItem.release_date
@@ -76,7 +76,7 @@ const SingleSidebarRight = (props) => {
                 </div>
             </div>
             <div>
-                <h3 className="text-2xl mb-2 font-extrabold">Runtime</h3>
+                <h3 className="text-2xl mb-2 font-bold">Runtime</h3>
                 <div className="mb-2 text-lg">
                     {singleItem.runtime
                         ? singleItem.runtime + " min"
@@ -84,19 +84,17 @@ const SingleSidebarRight = (props) => {
                 </div>
             </div>
             <div>
-                <h3 className="text-2xl mb-2 font-extrabold">Homepage</h3>
+                <h3 className="text-2xl mb-2 font-bold">Homepage</h3>
                 <a
                     href={
                         singleItem.homepage
-                            ? singleItem.homepage + " min"
-                            : "No runtime"
+                            ? singleItem.homepage
+                            : "#"
                     }
                     className="mb-2 text-lg capitalize"
                 >
                     {
-                        new URL(singleItem.homepage).hostname
-                            .split(".")
-                            .slice(-2, -1)[0]
+                        new URL(singleItem.homepage).hostname.split(".")[1]
                     }
                 </a>
             </div>

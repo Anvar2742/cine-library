@@ -35,7 +35,7 @@ module.exports = {
             },
         },
         fontFamily: {
-            sans: ["Nunito", "ui-sans-serif", "system-ui"],
+            sans: ["Montserrat", "ui-sans-serif", "system-ui"],
         },
     },
     plugins: [],

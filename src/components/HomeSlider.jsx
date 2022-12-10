@@ -9,7 +9,7 @@ const HomeSlider = (props) => {
     if (props.data.length === 0) return <Error />;
     return (
         <>
-            <h2 className="text-3xl mb-7 font-extrabold">
+            <h2 className="text-3xl mb-7 font-bold">
                 Trending{" "}
                 {props.mainTab && props.mainTab === "tv"
                     ? "TV shows"
@@ -41,11 +41,11 @@ const HomeSlider = (props) => {
                                 className="h-full w-full object-cover"
                                 onLoad={props.onLoad}
                             />
-                            <h2 className="text-6xl top-[10%] left-[8%] absolute z-10 font-extrabold">
+                            <h2 className="text-6xl top-[10%] left-[8%] absolute z-10 font-bold">
                                 {item.title ? item.title : item.name}
                             </h2>
                             <div className="z-10 absolute bottom-[30px] px-5 w-full flex justify-between items-center">
-                                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-2xl flex justify-center items-center h-14 px-8 transition-colors hover:bg-gray-249-5">
+                                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-bold text-2xl flex justify-center items-center h-14 px-8 transition-colors hover:bg-gray-249-5">
                                     <Icon.StarHalf size={35} className="mr-2" />
                                     <span className="pt-1">
                                         {item.vote_average
@@ -53,7 +53,7 @@ const HomeSlider = (props) => {
                                             : "No votes"}
                                     </span>
                                 </div>
-                                <div className="backdrop-blur-sm rounded-2xl font-extrabold text-lg flex justify-center items-center transition-colors h-14 px-8 text-black-darkest bg-secondary hover:bg-secondary-hover">
+                                <div className="backdrop-blur-sm rounded-2xl font-bold text-lg flex justify-center items-center transition-colors h-14 px-8 text-black-darkest bg-secondary hover:bg-secondary-hover">
                                     <span className="pt-1">
                                         {item.release_date
                                             ? item.release_date

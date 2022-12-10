@@ -34,14 +34,14 @@ const PopularSlider = (props) => {
                                 : item.name}
                         </h2>
                         <div className="z-10 absolute bottom-[30px] px-[20px] w-full flex justify-between">
-                            <button className="backdrop-blur-sm bg-gray-249 rounded-2xl font-extrabold text-lg flex justify-center items-center py-2 px-6 transition-colors hover:bg-gray-249-5">
+                            <button className="backdrop-blur-sm bg-gray-249 rounded-2xl font-bold text-lg flex justify-center items-center py-2 px-6 transition-colors hover:bg-gray-249-5">
                                 <span className="pt-1">
                                     {item.vote_average
                                         ? item.vote_average.toFixed(2)
                                         : "No votes"}
                                 </span>
                             </button>
-                            <button className="backdrop-blur-sm rounded-2xl font-extrabold text-lg flex justify-center items-center transition-colors py-2 px-6 text-black-darkest bg-secondary hover:bg-secondary-hover">
+                            <button className="backdrop-blur-sm rounded-2xl font-bold text-lg flex justify-center items-center transition-colors py-2 px-6 text-black-darkest bg-secondary hover:bg-secondary-hover">
                                 <span className="pt-1">
                                     {item.release_date
                                         ? item.release_date
@@ -59,7 +59,7 @@ const PopularSlider = (props) => {
 const Popular = (props) => {
     return (
         <div className="w-full pl-16">
-            <h2 className="text-3xl mb-8 font-extrabold">
+            <h2 className="text-3xl mb-8 font-bold">
                 Popular{" "}
                 {props.mainTab && props.mainTab === "tv"
                     ? "TV shows"

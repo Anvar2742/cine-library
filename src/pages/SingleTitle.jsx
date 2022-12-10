@@ -33,7 +33,7 @@ const SingleTitle = (props) => {
                     onLoad={() => setIsimageLoading(false)}
                     className="roun rounded-2xl"
                 />
-                <h1 className="text-6xl font-extrabold mt-10">
+                <h1 className="text-6xl font-bold mt-10">
                     {singleItem.title ? singleItem.title : "no title"}
                 </h1>
                 <p className="text-2xl mt-5">
