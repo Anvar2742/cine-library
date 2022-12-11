@@ -48,9 +48,9 @@ export const libLinks = [
 
 export const generalLinks = [
     {
-        name: "Discover2",
-        to: "/discover",
-        icon: Icon.Compass,
+        name: "Settings",
+        to: "/settings",
+        icon: Icon.Gear,
     },
     {
         name: "Discover3",

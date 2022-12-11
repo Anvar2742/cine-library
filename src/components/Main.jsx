@@ -29,10 +29,10 @@ const Main = (props) => {
     if (trendingTitles.error && popularTitles.error) return <Error />;
     return (
         <main className="relative">
-            {/* {props.isMainLoading ? <ImageLoader /> : ""} */}
+            {props.isMainLoading ? <ImageLoader /> : ""}
             <div
                 className={`text-white pt-20 pb-12 grid auto-rows-auto grid-cols-1 gap-10 ${
-                    props.isMainLoading ? "opacity-100" : ""
+                    props.isMainLoading ? "opacity-0" : ""
                 }`}
             >
                 <div className="px-16">

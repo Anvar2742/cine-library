@@ -35,7 +35,6 @@ const SidebarLeft = () => {
 
             <div className="w-full">
                 <NavLinks menu={menuLinks} menuTitle="Menu" />
-                <NavLinks menu={libLinks} menuTitle="Library" />
             </div>
             <NavLinks menu={generalLinks} menuTitle="General" />
         </aside>

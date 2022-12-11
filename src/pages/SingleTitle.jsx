@@ -17,7 +17,7 @@ const SingleTitle = (props) => {
     const { data, isLoading, error } =
         themoviedbApi.useGetSingleMovieQuery(filter);
 
-    !isLoading && console.log(getSingleTitle(data, 1280));
+    // !isLoading && console.log(getSingleTitle(data, 1280));
     const singleItem = getSingleTitle(data, 1280);
 
     if (isLoading) return <Loader />;

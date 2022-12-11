@@ -5,7 +5,7 @@ import Error from "./Error";
 import { Link } from "react-router-dom";
 
 const HomeSlider = (props) => {
-    console.log(props.data);
+    // console.log(props.data);
     if (props.data.length === 0) return <Error />;
     return (
         <>

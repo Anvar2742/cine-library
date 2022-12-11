@@ -14,7 +14,7 @@ const MiniSlider = (props) => {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     return (
-        <div className={`${props.isSidebarLoading ? "opacity-100" : ""}`}>
+        <div className={`${props.isSidebarLoading ? "opacity-0" : ""}`}>
             <div className="flex justify-between pr-9 mb-6">
                 <h2 className="text-3xl font-bold">Top Rated</h2>
                 <div className="flex">
@@ -89,7 +89,7 @@ const MiniSliderGenres = (props) => {
     const nextRef = useRef(null);
 
     return (
-        <div className={`${props.isSidebarLoading ? "opacity-100" : ""}`}>
+        <div className={`${props.isSidebarLoading ? "opacity-0" : ""}`}>
             <div className="flex justify-between pr-9 mb-6">
                 <h2 className="text-3xl font-bold">Genres</h2>
                 <div className="flex">
@@ -204,7 +204,7 @@ const SidebarRight = (props) => {
             </div>
 
             <div className="w-full grid auto-rows-auto gap-16 grid-cols-1 relative">
-                {/* {isSidebarLoading ? <SidebarLoader /> : ""} */}
+                {isSidebarLoading ? <SidebarLoader /> : ""}
                 <MiniSlider
                     items={topRatedTitlesData}
                     mainTab={props.mainTab}
