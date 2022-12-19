@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getSingleTitle } from "../assets";
+import { convertMoney, getSingleTitle } from "../assets";
 import { themoviedbApi } from "../redux/services/api";
 import Loader from "./Loader";
 import * as Icon from "react-bootstrap-icons";
@@ -86,17 +86,19 @@ const SingleSidebarRight = (props) => {
             <div>
                 <h3 className="text-2xl mb-2 font-bold">Homepage</h3>
                 <a
-                    href={
-                        singleItem.homepage
-                            ? singleItem.homepage
-                            : "#"
-                    }
+                    href={singleItem.homepage ? singleItem.homepage : "#"}
                     className="mb-2 text-lg capitalize"
                 >
-                    {
-                        new URL(singleItem.homepage).hostname.split(".")[1]
-                    }
+                    {new URL(singleItem.homepage).hostname.split(".")[1]}
                 </a>
+            </div>
+            <div>
+                <h3 className="text-2xl mb-2 font-bold">Budget</h3>
+                <span className="uppercase">
+                    {singleItem.budget
+                        ? "$" + convertMoney(singleItem.budget)
+                        : "No budget"}
+                </span>
             </div>
         </aside>
     );

@@ -30,7 +30,7 @@ const HomeSlider = (props) => {
                     `}
                     >
                         <Link
-                            className="text-white block
+                            className="text-white block h-full
                         after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black rounded-2xl overflow-hidden
                         "
                             to={`/title/${item.media_type}/${item.id}`}

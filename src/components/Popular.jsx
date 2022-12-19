@@ -15,7 +15,7 @@ const PopularSlider = (props) => {
                 <SwiperSlide key={item.id} className="">
                     <Link
                         to={`/title/${props.mainTab}/${item.id}`}
-                        className="block relative
+                        className="block relative h-full
                                     after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden"
                     >
                         <img

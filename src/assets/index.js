@@ -49,3 +49,24 @@ export function getSingleTitle(data, size) {
 
     return results;
 }
+
+// 375 000 000
+export function convertMoney(num) {
+    const numArr = num.toString().split("");
+    const numArrLength = numArr.length;
+    const numTitlesArr = ["k", "mln", "bln"];
+    let splitNum = num;
+
+    if (numArrLength > 9) {
+        let splitNum = numArr.slice(0, numArrLength - 9).join("");
+        return splitNum + numTitlesArr[2];
+    } else if (numArrLength > 6) {
+        let splitNum = numArr.slice(0, numArrLength - 6).join("");
+        return splitNum + numTitlesArr[1];
+    } else if (numArrLength > 5) {
+        let splitNum = numArr.slice(0, numArrLength - 3).join("");
+        return splitNum + numTitlesArr[0];
+    } else {
+        return splitNum;
+    }
+}
