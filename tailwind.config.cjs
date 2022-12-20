@@ -28,7 +28,8 @@ module.exports = {
                 "dark-blue": "rgb(76 79 86)",
             },
             gridTemplateColumns: {
-                main: "15% 63% 22%",
+                "main-2xl": "15% 63% 22%",
+                main: "25% 75%",
             },
             gridTemplateRows: {
                 "preloader-rows": "60% 40%",

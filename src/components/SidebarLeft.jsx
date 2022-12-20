@@ -27,7 +27,8 @@ const NavLinks = ({ menu, menuTitle }) => {
 
 const SidebarLeft = () => {
     return (
-        <aside className="bg-black-dark text-white-gray flex flex-col justify-around items-start pl-[38px] h-full">
+        <aside className="bg-black-dark text-white-gray hidden flex-col justify-around items-start pl-[38px] h-full
+                            lg:flex">
             <Link to="/" className="text-white-gray text-4xl font-bold leading-6">
                 CINE <br />
                 <span className="text-xl">LIBRARY</span>

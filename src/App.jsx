@@ -17,6 +17,7 @@ function App() {
     const [mainComponentCount, setMainComponentCount] = useState(3);
     const [imagesCount, setImagesCount] = useState(0);
     const [isMainLoading, setIsMainLoading] = useState(true);
+    const [isOverflow, setIsOverflow] = useState(true);
 
     function handleSearchChange(e) {
         setSearchValue(e.target.value);
@@ -52,15 +53,26 @@ function App() {
         setImagesCount((prev) => prev + 1);
     }
 
+    function setMainOverflow(bool) {
+        setIsOverflow(bool);
+    }
     return (
-        <div className="grid grid-cols-main h-full font-sans bg-black-darkest">
+        <div
+            className="grid grid-cols-1 h-full font-sans bg-black-darkest
+                        2xl:grid-cols-main-2xl lg:grid-cols-main"
+        >
             <SidebarLeft />
-            <div className="overflow-auto overflow-x-hidden">
+            <div
+                className={`overflow-x-hidden ${
+                    isOverflow ? "overflow-auto" : "overflow-hidden"
+                }`}
+            >
                 <Header
                     searchValue={searchValue}
                     handleSearchChange={handleSearchChange}
                     changeTabs={changeTabs}
                     tabs={tabs}
+                    setMainOverflow={setMainOverflow}
                 />
                 <Routes>
                     <Route
@@ -99,9 +111,7 @@ function App() {
                 <Route path="title">
                     <Route
                         path="/title/:type/:titleId"
-                        element={
-                            <SingleSidebarRight />
-                        }
+                        element={<SingleSidebarRight />}
                     />
                 </Route>
             </Routes>

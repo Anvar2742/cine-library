@@ -35,7 +35,7 @@ const Main = (props) => {
                     props.isMainLoading ? "opacity-0" : ""
                 }`}
             >
-                <div className="px-16">
+                <div className="px-4 sm:px-16">
                     <HomeSlider
                         mainTab={props.mainTab}
                         data={trendingTitlesData}

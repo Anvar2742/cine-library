@@ -39,6 +39,11 @@
     ::-webkit-scrollbar-thumb:hover {
         @apply bg-slate-600;
     }
+
+    html {
+        -webkit-tap-highlight-color: transparent;
+      }
+      
 }
 
 .swiper-wrapper {
@@ -46,7 +51,7 @@
 }
 
 .swiper-pagination-bullets {
-    @apply bg-gray-249 rounded-md w-auto left-[50%] -translate-x-[50%] py-2 px-3 flex absolute bottom-10 z-10;
+    @apply bg-gray-249 rounded-md w-auto left-[50%] -translate-x-[50%] py-2 px-3 flex absolute -bottom-10 z-10;
 }
 
 .swiper-pagination-bullet:not(:last-child) {
@@ -63,7 +68,7 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-    @apply absolute w-16 h-16 cursor-pointer flex items-center justify-center z-40 -translate-y-[50%] transition-colors top-[50%] bg-gray-249 rounded-xl backdrop-blur-sm;
+    @apply absolute w-10 h-10 sm:w-12 sm:h-12 xl:w-16 xl:h-16 cursor-pointer flex items-center justify-center z-40 -translate-y-[50%] transition-colors top-[50%] bg-gray-249 rounded-xl backdrop-blur-sm;
 }
 
 .swiper-button-next {
@@ -81,7 +86,7 @@
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-    @apply content-[''] block w-3 h-4 bg-[url('./assets/img/prev.svg')] bg-center bg-cover bg-no-repeat;
+    @apply content-[''] block w-1 h-2 sm:w-3 sm:h-4 bg-[url('./assets/img/prev.svg')] bg-center bg-cover bg-no-repeat;
 }
 
 .swiper-button-next:after {
@@ -89,7 +94,7 @@
 }
 
 .swiper-button-disabled {
-    @apply opacity-60 pointer-events-none;
+    @apply opacity-60;
 }
 
 .swiper-slide-active {

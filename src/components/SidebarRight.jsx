@@ -190,7 +190,8 @@ const SidebarRight = (props) => {
     }, [props.mainTab]);
 
     return (
-        <aside className="bg-black-dark text-white-gray flex flex-col justify-around items-start pl-9 h-full overflow-x-hidden">
+        <aside className="bg-black-dark text-white-gray hidden flex-col justify-around items-start pl-9 h-full overflow-x-hidden
+                            2xl:flex">
             <div className="flex items-center justify-between w-full pr-9">
                 <button className="w-14 h-14 flex items-center justify-center bg-gray-249 rounded-2xl text-4xl relative">
                     <Icon.Bell />

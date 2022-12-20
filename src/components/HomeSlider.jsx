@@ -9,7 +9,7 @@ const HomeSlider = (props) => {
     if (props.data.length === 0) return <Error />;
     return (
         <>
-            <h2 className="text-3xl mb-7 font-bold">
+            <h2 className="text-2xl sm:text-3xl mb-8 font-bold">
                 Trending{" "}
                 {props.mainTab && props.mainTab === "tv"
                     ? "TV shows"
@@ -20,19 +20,20 @@ const HomeSlider = (props) => {
                 navigation
                 pagination={{ clickable: true }}
                 slidesPerView={1}
-                className="w-full h-[30vw]"
+                className="w-full h-[80vw] overflow-visible mb-16
+                            md:h-[50vw]
+                            lg:h-[35vw]"
             >
                 {props.data.map((item) => (
                     <SwiperSlide
                         key={item.id}
                         className={`
-                        relative opacity-0 transition-opacity
-                    `}
+                            relative opacity-0 transition-opacity
+                        `}
                     >
                         <Link
                             className="text-white block h-full
-                        after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black rounded-2xl overflow-hidden
-                        "
+                                        after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black rounded-2xl overflow-hidden"
                             to={`/title/${item.media_type}/${item.id}`}
                         >
                             <img
@@ -41,20 +42,23 @@ const HomeSlider = (props) => {
                                 className="h-full w-full object-cover"
                                 onLoad={props.onLoad}
                             />
-                            <h2 className="text-6xl top-[10%] left-[8%] absolute z-10 font-bold">
+                            <h2 className="text-xl top-[10%] left-[8%] absolute z-10 font-bold pr-12 xl:text-6xl">
                                 {item.title ? item.title : item.name}
                             </h2>
-                            <div className="z-10 absolute bottom-[30px] px-5 w-full flex justify-between items-center">
-                                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-bold text-2xl flex justify-center items-center h-14 px-8 transition-colors hover:bg-gray-249-5">
-                                    <Icon.StarHalf size={35} className="mr-2" />
-                                    <span className="pt-1">
+                            <div
+                                className="z-10 absolute bottom-[30px] px-5 w-full flex justify-between items-center text-sm
+                                            xl:text-xl"
+                            >
+                                <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-bold flex justify-center items-center h-8 px-4 transition-colors hover:bg-gray-249-5">
+                                    <Icon.StarHalf className="mr-2 w-4 h-4 xl:w-8 xl:h-8" />
+                                    <span className="">
                                         {item.vote_average
                                             ? item.vote_average.toFixed(2)
                                             : "No votes"}
                                     </span>
                                 </div>
-                                <div className="backdrop-blur-sm rounded-2xl font-bold text-lg flex justify-center items-center transition-colors h-14 px-8 text-black-darkest bg-secondary hover:bg-secondary-hover">
-                                    <span className="pt-1">
+                                <div className="backdrop-blur-sm rounded-2xl font-bold flex justify-center items-center transition-colors h-8 px-4 text-black-darkest bg-secondary hover:bg-secondary-hover">
+                                    <span className="">
                                         {item.release_date
                                             ? item.release_date
                                             : "Date misses."}
