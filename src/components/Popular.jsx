@@ -9,7 +9,7 @@ const PopularSlider = (props) => {
             spaceBetween={30}
             breakpoints={{
                 1536: {
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                 },
                 1024: {
                     slidesPerView: 3,
@@ -24,8 +24,9 @@ const PopularSlider = (props) => {
             className="w-full h-[100vw] overflow-visible pr-[15%] relative
                         after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal after:z-30 after:pointer-events-none
                         2xl:h-[35vw]
-                        lg:h-[28vw]
+                        lg:h-[25vw]
                         md:h-[35vw]
+                        sm:h-[55vw]
                     "
         >
             {props.items.map((item) => (
@@ -37,21 +38,14 @@ const PopularSlider = (props) => {
                     >
                         <img
                             src={item.poster_path}
-                            alt={
-                                item.original_title
-                                    ? item.original_title
-                                    : item.name
-                            }
+                            alt={item.title ? item.title : item.name}
                             className="h-full w-full object-cover"
                             onLoad={props.onLoad}
                         />
                         <h2
-                            className="text-xl top-[10%] left-[8%] absolute z-10 pr-3
-                                        xl:text-2xl"
+                            className="text-xl top-[10%] left-[8%] absolute z-10 pr-3 xl:text-2xl"
                         >
-                            {item.original_title
-                                ? item.original_title
-                                : item.name}
+                            {item.title ? item.title : item.name}
                         </h2>
                         <div
                             className="z-10 absolute bottom-[30px] px-[20px] w-full flex justify-between gap-2 text-sm
@@ -80,6 +74,7 @@ const PopularSlider = (props) => {
 };
 
 const Popular = (props) => {
+    console.log(props.data);
     return (
         <div className="w-full pl-4 sm:pl-16">
             <h2 className="text-2xl sm:text-3xl mb-8 font-bold">

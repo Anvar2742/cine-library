@@ -21,8 +21,8 @@ const HomeSlider = (props) => {
                 pagination={{ clickable: true }}
                 slidesPerView={1}
                 className="w-full h-[80vw] overflow-visible mb-16
-                            md:h-[50vw]
-                            lg:h-[35vw]"
+                            md:h-[45vw]
+                            lg:h-[30vw]"
             >
                 {props.data.map((item) => (
                     <SwiperSlide
@@ -42,15 +42,15 @@ const HomeSlider = (props) => {
                                 className="h-full w-full object-cover"
                                 onLoad={props.onLoad}
                             />
-                            <h2 className="text-xl top-[10%] left-[8%] absolute z-10 font-bold pr-12 xl:text-6xl">
+                            <h2 className="text-xl top-[10%] left-10 absolute z-10 font-bold pr-12 xl:text-6xl">
                                 {item.title ? item.title : item.name}
                             </h2>
                             <div
-                                className="z-10 absolute bottom-[30px] px-5 w-full flex justify-between items-center text-sm
+                                className="z-10 absolute bottom-[30px] px-10 w-full flex justify-between items-center text-sm
                                             xl:text-xl"
                             >
                                 <div className="backdrop-blur-sm bg-gray-249 rounded-2xl font-bold flex justify-center items-center h-8 px-4 transition-colors hover:bg-gray-249-5">
-                                    <Icon.StarHalf className="mr-2 w-4 h-4 xl:w-8 xl:h-8" />
+                                    <Icon.StarHalf className="mr-2 w-4 h-4 xl:w-5 xl:h-5" />
                                     <span className="">
                                         {item.vote_average
                                             ? item.vote_average.toFixed(2)
@@ -61,6 +61,8 @@ const HomeSlider = (props) => {
                                     <span className="">
                                         {item.release_date
                                             ? item.release_date
+                                            : item.first_air_date
+                                            ? item.first_air_date
                                             : "Date misses."}
                                     </span>
                                 </div>

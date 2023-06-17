@@ -9,7 +9,7 @@ import Popular from "./Popular";
 
 const Main = (props) => {
     const trendingTitles = themoviedbApi.useGetTrendingWeekQuery(props.mainTab);
-    const trendingTitlesData = getTitles(trendingTitles.data, 500).slice(0, 5);
+    const trendingTitlesData = getTitles(trendingTitles.data, 1280).slice(0, 5);
 
     const filterPopular = {
         type: props.mainTab,
