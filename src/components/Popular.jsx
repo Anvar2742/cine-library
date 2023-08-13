@@ -21,12 +21,12 @@ const PopularSlider = (props) => {
                     slidesPerView: 2,
                 },
             }}
-            className="w-full h-[100vw] overflow-visible pr-[15%] relative
+            className="w-full 2h-[100vw] overflow-visible pr-[15%] relative
                         after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal after:z-30 after:pointer-events-none
-                        2xl:h-[35vw]
-                        lg:h-[25vw]
-                        md:h-[35vw]
-                        sm:h-[55vw]
+                        22xl:h-[35vw]
+                        2lg:h-[25vw]
+                        2md:h-[35vw]
+                        2sm:h-[55vw]
                     "
         >
             {props.items.map((item) => (

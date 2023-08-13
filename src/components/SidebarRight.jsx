@@ -40,7 +40,7 @@ const MiniSlider = (props) => {
                     swiper.navigation.init();
                     swiper.navigation.update();
                 }}
-                className="w-full overflow-visible pr-[25%] relative h-[10vw]
+                className="w-full overflow-visible pr-[25%] relative 2h-[10vw]
                                         after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30 after:pointer-events-none
                                     "
             >
@@ -115,7 +115,7 @@ const MiniSliderGenres = (props) => {
                     swiper.navigation.init();
                     swiper.navigation.update();
                 }}
-                className="w-full overflow-visible pr-[25%] relative h-[20vw]
+                className="w-full overflow-visible pr-[25%] relative 2h-[20vw]
                                         after:block after:absolute after:h-full after:w-[20%] after:right-0 after:top-0 after:bg-overlay-horizontal-dark-blue after:z-30
                                     "
             >
@@ -127,25 +127,33 @@ const MiniSliderGenres = (props) => {
                                 className="grid grid-rows-2 grid-cols-1 gap-y-7"
                             >
                                 <div
-                                    className="bg-[url('https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')] bg-center bg-cover bg-no-repeat relative h-full 
+                                    className="relative h-full 
                                     outline-1 outline-border-gray
                                     flex items-center justify-center
                                     after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden
                                     "
                                 >
-                                    <h3 className="relative z-10 text-lg font-bold">
+                                    <img
+                                        src="https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg"
+                                        alt="genre"
+                                    />
+                                    <h3 className="z-10 text-lg font-bold absolute">
                                         {item.name}
                                     </h3>
                                 </div>
 
                                 <div
-                                    className="bg-[url('https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')] bg-center bg-cover bg-no-repeat relative h-full 
+                                    className="relative h-full 
                                     outline-1 outline-border-gray
                                     flex items-center justify-center
                                     after:block after:absolute after:w-full after:h-full after:top-0 after:bg-overlay-black-2 rounded-2xl overflow-hidden
                                     "
                                 >
-                                    <h3 className="relative z-10 text-lg font-bold">
+                                    <img
+                                        src="https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg"
+                                        alt="genre"
+                                    />
+                                    <h3 className="z-10 text-lg font-bold absolute">
                                         {props.items[i - 1].name}
                                     </h3>
                                 </div>
@@ -190,8 +198,10 @@ const SidebarRight = (props) => {
     }, [props.mainTab]);
 
     return (
-        <aside className="bg-black-dark text-white-gray hidden flex-col justify-around items-start pl-9 h-full overflow-x-hidden
-                            2xl:flex">
+        <aside
+            className="bg-black-dark text-white-gray hidden flex-col justify-around items-start pl-9 h-full overflow-x-hidden
+                            lg:flex"
+        >
             <div className="flex items-center justify-between w-full pr-9">
                 <button className="w-14 h-14 flex items-center justify-center bg-gray-249 rounded-2xl text-4xl relative">
                     <Icon.Bell />

@@ -59,7 +59,7 @@ function App() {
     return (
         <div
             className="grid grid-cols-1 h-full font-sans bg-black-darkest
-                        2xl:grid-cols-main-2xl lg:grid-cols-main"
+                        mxl:grid-cols-main-mxl 2xl:grid-cols-main-2xl lg:grid-cols-main"
         >
             <SidebarLeft />
             <div

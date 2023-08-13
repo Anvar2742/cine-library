@@ -28,11 +28,15 @@ module.exports = {
                 "dark-blue": "rgb(76 79 86)",
             },
             gridTemplateColumns: {
-                "main-2xl": "15% 63% 22%",
+                "main-2xl": "5% 65% 30%",
+                "main-mxl": "15% 63% 22%",
                 main: "25% 75%",
             },
             gridTemplateRows: {
                 "preloader-rows": "60% 40%",
+            },
+            screens: {
+                mxl: "1800px"
             },
         },
         fontFamily: {
